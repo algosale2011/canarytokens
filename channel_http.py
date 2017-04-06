@@ -71,7 +71,7 @@ class CanarytokenPage(resource.Resource, InputChannel):
                 elif TOKEN_RETURN == 'fortune':
                     try:
                         fortune = subprocess.check_output('/usr/games/fortune')
-                        template = env.get_template('403.html')
+                        template = env.get_template('fortune.html')
                         return template.render(fortune=fortune).encode('utf8')
                     except Exception as e:
                         log.err('Could not get a fortune: {e}'.format(e=e))
