@@ -85,8 +85,9 @@ class CanarytokenPage(resource.Resource, InputChannel):
         except Exception as e:
             log.err('Error in render GET: {error}'.format(error=e))
 
-        request.setHeader("Content-Type", "image/gif")
-        return self.GIF
+        request.setHeader("Content-Type", "html")
+        template = env.get_template('403.html')
+        return template.render().encode('utf8')
 
 
     def render_POST(self, request):
